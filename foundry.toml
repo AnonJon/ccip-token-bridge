@@ -1,6 +1,17 @@
 [profile.default]
 src = "src"
 out = "out"
-libs = ["lib"]
+libs = ['lib', 'node_modules']
+remappings = [
+    '@openzeppelin=lib/openzeppelin-contracts',
+    '@openzeppelin-upgrades=lib/openzeppelin-contracts-upgradeable',
+    'forge-std=lib/forge-std/src',
+    'chainlink=lib/chainlink',
+    '@ccip/contracts-ccip/=node_modules/@chainlink/contracts-ccip',
+]
+fs_permissions = [{ access = "read", path = "./" }]
 
-# See more config options https://github.com/foundry-rs/foundry/tree/master/crates/config
+[rpc_endpoints]
+arbitrum = "${ARBITRUM_RPC_URL}"
+mainnet = "${MAINNET_RPC_URL}"
+sepolia = "${SEPOLIA_RPC_URL}"
